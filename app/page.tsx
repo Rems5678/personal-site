@@ -1,113 +1,144 @@
-import Image from 'next/image'
+import { Divider } from '@/components/atoms/Divider';
+import { Image } from '@/components/atoms/Image';
+import { Link } from '@/components/atoms/Link';
+import { Typography } from '@/components/atoms/Typography';
+import { WorkHistoryItem } from '@/components/features/WorkHistoryItem';
+import { TECHNOLOGIES, WEBSITES, WORK_HISTORY_ITEMS } from './constants';
+import { Fragment } from 'react';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <main className="flex flex-col w-full z-10">
+      <div className="flex w-full py-3 px-[200px] gap-x-16 bg-navbar-gradient absolute z-10 top-0 left-0">
+        <Link href="#work-history" color="dark">
+          Work History
+        </Link>
+        <Link href="#skills" color="dark">
+          Skills
+        </Link>
+        <Link href="#contact" color="dark">
+          Contact
+        </Link>
+      </div>
+      <section className="flex justify-center relative min-h-[333px]">
+        <div className="absolute top-0 left-0 w-full -z-30">
+          <div className="relative bg-hero-gradient w-full h-[333px] z-10"></div>
+          <div className="absolute top-0 right-0 w-[761px] h-[333px]">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              src="/assets/background-pattern.webp"
+              alt="background-image"
+              ratio={761 / 333}
             />
-          </a>
+          </div>
         </div>
-      </div>
+        <div className="flex flex-col gap-y-5 max-w-[506px] my-[80px] relative">
+          <div className="flex flex-col gap-y-2">
+            <Typography variant="header2" color="light">
+              Devon Vaccarino
+            </Typography>
+            <Typography variant="caption" color="light">
+              Senior Frontend Developer
+            </Typography>
+          </div>
+          <Typography color="light">
+            I&apos;m a React/Next.js specialist who enjoys writing clean
+            maintainable code with a special knack for balancing maintainability
+            with velocity. I build websites, web apps, and design systems from
+            the ground up.
+          </Typography>
+          <Typography color="light">Have an idea? Get in touch!</Typography>
+          {/* TODO: create a CTA button */}
+        </div>
+      </section>
+      <section
+        className="flex flex-col items-center w-full my-20"
+        id="work-history"
+      >
+        <div className="flex flex-col gap-y-4 max-w-[500px] w-full items-center">
+          <Typography variant="header2">Work History</Typography>
+          <div className="flex flex-col w-full px-8 py-4 items-center gap-y-8">
+            {WORK_HISTORY_ITEMS.map((workHistoryItemProps, index) => {
+              const isLastItem = index === WORK_HISTORY_ITEMS.length - 1;
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+              return (
+                <Fragment key={index}>
+                  <WorkHistoryItem {...workHistoryItemProps} />
+                  {!isLastItem && <Divider className="max-w-[380px] w-full" />}
+                </Fragment>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <section
+        className="relative flex justify-center p-6 w-full gap-4 overflow-hidden"
+        id="skills"
+      >
+        <div className="absolute top-[130px] -left-[100px] -z-10 w-[120vw] h-[250px] rotate-[-20deg] bg-primary"></div>
+        <div className="flex flex-col items-center gap-y-3 rounded-md w-full max-w-[520px] py-6 px-4 bg-white">
+          <Typography variant="header2">Technologies</Typography>
+          <div>
+            <ul className="grid grid-cols-3 h-full gap-4">
+              {TECHNOLOGIES.map((tech) => (
+                <li key={tech}>
+                  <Typography variant="header4">{tech}</Typography>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-y-3 rounded-md w-full max-w-[520px] py-6 px-4 gap-4 bg-white">
+          <Typography variant="header2">Websites</Typography>
+          <div>
+            <ul className="flex flex-col h-full gap-4">
+              {WEBSITES.map((website) => (
+                <li key={website}>
+                  <Link color="light" href={website}>
+                    {website}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section className="relative flex justify-center" id="contact">
+        <div className="absolute top-0 left-0 w-full -z-30">
+          <div className="relative bg-contact-section-gradient w-full h-[333px] z-10" />
+          <div className="absolute top-0 left-0 w-[761px] h-[333px]">
+            <Image
+              src="/assets/background-pattern.webp"
+              alt="background-image"
+              ratio={761 / 333}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col items-center gap-y-5 max-w-[506px] my-[80px]">
+          <Typography variant="header2" color="light">
+            Contact
+          </Typography>
+          <Typography color="light" variant="header3">
+            devonev92@gmail.com
+          </Typography>
+          <div className="flex gap-x-3">
+            <Link
+              href="https://www.linkedin.com/in/devon-vaccarino/"
+              target="_blank"
+              color="dark"
+            >
+              Linkedin
+            </Link>
+            <Divider orientation="vertical" color="white" />
+            <Link
+              href="https://github.com/Rems5678"
+              target="_blank"
+              color="dark"
+            >
+              Github
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
-  )
+  );
 }

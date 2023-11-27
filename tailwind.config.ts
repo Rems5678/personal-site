@@ -30,10 +30,10 @@ const config: Config = {
     },
     fontSize: {
       header1: [
-        '64px',
+        '42px',
         {
           fontWeight: 600,
-          lineHeight: '80px',
+          lineHeight: '44px',
         },
       ],
       header2: [
@@ -109,6 +109,8 @@ const config: Config = {
           'linear-gradient(95deg, #202020 2.29%, #2D544B 66.45%, rgba(69, 182, 156, 0.00) 99.38%)',
         'contact-section-gradient':
           'linear-gradient(95deg, rgba(69, 182, 156, 0.00) 5.04%, #2D544B 39.62%, #202020 100%);',
+        'contact-section-gradient-mobile':
+          'linear-gradient(95deg, #45B69C 0.92%, #2D544B 39.62%, #202020 100%);',
       },
     },
   },

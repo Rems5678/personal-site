@@ -7,6 +7,7 @@ const Typography: FC<TypographyProps> = ({
   variant = 'body',
   color = 'inherit',
   children,
+  ...typographyProps
 }) => {
   const variantClassNames = getVariantClassNames(variant);
   const colorClassNames = getColorClassNames(color);
@@ -15,6 +16,7 @@ const Typography: FC<TypographyProps> = ({
       className={[className, variantClassNames, colorClassNames, 'flex'].join(
         ' ',
       )}
+      {...typographyProps}
     >
       {children}
     </p>
